@@ -1,24 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import HomePage from "./components/HomePage";
+import MoviesPage from "./components/moviesPage";
+import MovieDetailsPage from "./components/movieDetailsPAge/MovieDetailsPage";
+import {BrowserRouter,Route,Redirect,Switch,Link} from "react-router-dom";
+import Header from "./components/Header";
+
 
 function App() {
   return (
+      <BrowserRouter>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 style={{textAlign:"center"}}>Hello kinopoisk</h1>
+      {/*<Header/>*/}
+      <nav>
+      <Link to="/"> HomePage </Link>
+      <Link to="/movies"> MoviesPage </Link>
+
+      </nav>
+      <Switch>
+        <Route exact path="/" component={HomePage}/>
+        <Route exact  path="/movies"  component={MoviesPage} />
+        <Route path="/movies/:movieId" component={MovieDetailsPage} />
+        <Route render={() => <Redirect to={{pathname: "/"}} />} />
+      </Switch>
     </div>
+      </BrowserRouter>
   );
 }
 
