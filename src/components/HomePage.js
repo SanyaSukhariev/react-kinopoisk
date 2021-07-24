@@ -17,7 +17,7 @@ const HomePage = () => {
     return (
         <div>
 
-            <h2>HomePage</h2>
+            <h2>HomePage netlify</h2>
             <p>домашняя страница со списком популярных кинофильмов.</p>
 
             {commitsList.filter(({title})=>title).map(({id,title})=><Link to={`/movies/${id}`}><ul><li>{title}</li></ul></Link>)
